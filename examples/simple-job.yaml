@@ -1,0 +1,22 @@
+apiVersion: l6p.io/v1
+kind: Job
+metadata:
+  name: my-test
+spec:
+  template:
+    spec:
+      containers:
+        - name: test
+          image: localhost:32000/test-script
+          imagePullPolicy: Always 
+  replicas: 3
+  minScaleIntervalSeconds: 10
+  activeSeconds: 60 
+  ttlSecondsAfterFinished: 10
+  proxy:
+    enabled: true
+    port: 3210
+    kafka:
+      enabled: true
+      addr: "kafka-0.kafka-headless.l6p.svc.cluster.local:9092"
+      topic: "l6p.log"

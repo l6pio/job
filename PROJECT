@@ -1,0 +1,19 @@
+domain: l6p.io
+layout:
+- go.kubebuilder.io/v3
+projectName: job
+repo: l6p.io/job
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: l6p.io
+  kind: Job
+  path: l6p.io/job/api/v1
+  version: v1
+  webhooks:
+    defaulting: true
+    validation: true
+    webhookVersion: v1
+version: "3"
